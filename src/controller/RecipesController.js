@@ -1,5 +1,5 @@
 import { RecipeModel } from "../models/RecipeSchema.js";
-import { UserModel } from "../models/userSchema.js";
+import { UserModel } from "../models/UserSchema.js";
 
 export const getAllRecipes = async (req, res) => {
    try {
