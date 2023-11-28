@@ -61,6 +61,7 @@ export const saveRecipes = async (req, res) => {
 export const getSavedRecipes = async (req, res) => {
    try {
       const user = await UserModel.findById(req.params.userId);
+      // console.log("user", user);
       res.json({ savedRecipes: user?.savedRecipes });
    } catch (err) {
       console.err("Err", err);
@@ -71,6 +72,8 @@ export const getSavedRecipes = async (req, res) => {
 export const getUserSavedRecipes = async (req, res) => {
    try {
       const user = await UserModel.findById(req.params.userId);
+      // console.log("user", user);
+
       const savedRecipes = await RecipeModel.find({
          _id: { $in: user.savedRecipes },
       });
@@ -78,6 +81,23 @@ export const getUserSavedRecipes = async (req, res) => {
       res.json({ savedRecipes });
    } catch (err) {
       console.err("Err", err);
+      res.json(err);
+   }
+};
+
+export const getMyRecipes = async (req, res) => {
+   try {
+      const user = await UserModel.findById(req.params.userId);
+
+      // console.log("user: ", user);
+      const myRecipes = await RecipeModel.find({
+         userOwner: { $in: user._id },
+      });
+      // console.log(myRecipes);
+
+      res.json(myRecipes);
+   } catch (err) {
+      console.error("Err", err);
       res.json(err);
    }
 };

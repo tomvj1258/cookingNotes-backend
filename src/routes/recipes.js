@@ -2,6 +2,7 @@ import express from "express";
 import {
    createRecipes,
    getAllRecipes,
+   getMyRecipes,
    getSavedRecipes,
    getUserSavedRecipes,
    saveRecipes,
@@ -15,5 +16,6 @@ router.post("/", verifyToken, createRecipes);
 router.put("/", verifyToken, saveRecipes);
 router.get("/savedRecipes/id/:userId", getSavedRecipes);
 router.get("/savedRecipes/:userId", getUserSavedRecipes);
+router.get("/myRecipes/:userId", getMyRecipes);
 
 export { router as recipesRouter };
