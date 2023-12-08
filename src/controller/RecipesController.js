@@ -64,7 +64,7 @@ export const getSavedRecipes = async (req, res) => {
       // console.log("user", user);
       res.json({ savedRecipes: user?.savedRecipes });
    } catch (err) {
-      console.err("Err", err);
+      console.error("Err", err);
       res.json(err);
    }
 };
@@ -80,7 +80,7 @@ export const getUserSavedRecipes = async (req, res) => {
 
       res.json({ savedRecipes });
    } catch (err) {
-      console.err("Err", err);
+      console.error("Err", err);
       res.json(err);
    }
 };
